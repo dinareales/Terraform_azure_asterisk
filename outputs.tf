@@ -1,6 +1,7 @@
 output "public_ip_address" {
   value       = azurerm_public_ip.asterisk_public_ip.ip_address
   description = "La dirección IP pública de la VM de Asterisk"
+  depends_on  = [azurerm_linux_virtual_machine.asterisk_vm]
 }
 
 output "public_fqdn" {
@@ -13,7 +14,7 @@ output "ssh_connection" {
   description = "Comando para conectarse por SSH a la VM"
 }
 
-output "asterisk_extensions" {
-  value       = "Extensiones configuradas: 1000 (password1000) y 1001 (password1001)"
-  description = "Información de las extensiones SIP configuradas"
+output "asterisk_info" {
+  value       = "Asterisk 22.3.0 está preinstalado en esta VM. Consulta la documentación de pcloudhosting para las credenciales predeterminadas y configuración."
+  description = "Información sobre Asterisk preinstalado"
 }

@@ -14,7 +14,7 @@ variable "admin_username" {
 }
 
 variable "admin_password" {
-  description = "Contraseña para la VM"
+  description = "Contraseña para la VM (debe cumplir requisitos de complejidad de Azure)"
   sensitive   = true
 }
 
