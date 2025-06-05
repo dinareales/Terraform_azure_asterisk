@@ -1,6 +1,6 @@
 # ☎️ Despliegue de Asterisk en Azure con Terraform
 
-Este proyecto despliega una máquina virtual en Azure con Asterisk preinstalado, utilizando una imagen del Marketplace, optimizado para la capa gratuita de Azure.
+Este proyecto despliega una máquina virtual en Azure con Asterisk.
 
 ---
 
@@ -9,8 +9,7 @@ Este proyecto despliega una máquina virtual en Azure con Asterisk preinstalado,
 - ✅ Cuenta de Azure con CLI configurado (`az login`)
 - ✅ Terraform versión 1.0 o superior
 - ✅ Credenciales válidas de Azure
-- ✅ Términos del Marketplace aceptados
-
+   
 ---
 
 ## 📁 Estructura del Proyecto
@@ -26,29 +25,26 @@ terraform_asterisk_azure/
 ---
 
 ## ⚙️ Uso
+## Pasos
 
-1. **Inicializar el entorno Terraform:**
+```bash
+terraform init
+terraform validate
+terraform plan -out=tfplan
+terraform apply tfplan
+``` 
+## Cargar el script directamente en la VM con SCP
+Desde tu máquina local:
 
-   ```bash
-   terraform init
-   ```
+```bash
+scp -i ~/.ssh/id_rsa install_asterisk.sh azureuser@52.226.133.205:~
+```
+Luego, dentro de la VM:
 
-2. **Aplicar la infraestructura con tu contraseña segura:**
-
-   ```bash
-   terraform apply -var="admin_password=TuContraseñaSegura123!"
-   ```
-
-3. **Opcional:** Aceptar manualmente los términos del Marketplace si ves errores:
-
-   ```bash
-   az vm image terms accept \
-     --publisher "pcloudhosting" \
-     --offer "asterisk" \
-     --plan "asterisk-22-3-0-free-support-on-opensuse-15-6"
-   ```
-
----
+```bash
+chmod +x install_asterisk.sh
+sudo ./install_asterisk.sh
+```
 
 ## 🔐 Acceso SSH
 
@@ -93,14 +89,6 @@ terraform destroy -auto-approve
 - VM B1s (~$9/mes)
 - IP dinámica (ahorra costos)
 - Disco estándar (`Standard_LRS`)
-- Apagado automático 19:00 UTC
 
 ---
 
-## ℹ️ Soporte y configuración Asterisk
-
-La imagen preconfigurada es publicada por `pcloudhosting`.
-
-Consulta su documentación oficial en el Marketplace de Azure para credenciales, interfaz web (si aplica) y configuración por defecto.
-
----
