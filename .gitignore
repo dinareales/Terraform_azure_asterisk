@@ -1,0 +1,25 @@
+# Archivos y directorios de estado de Terraform
+*.tfstate
+*.tfstate.*
+.crash
+*.log
+*.backup
+.terraform/
+terraform.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Archivos sensibles o personalizados
+*.pem
+*.key
+*.env
+
+# Archivos de configuración local de IDEs
+.idea/
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
