@@ -37,7 +37,7 @@ terraform apply tfplan
 Desde tu máquina local:
 
 ```bash
-scp -i ~/.ssh/id_rsa install_asterisk.sh azureuser@52.226.133.205:~
+scp -i ~/.ssh/id_rsa install_asterisk.sh azureuser@[ip de tu proyecto azure]:~
 ```
 Luego, dentro de la VM:
 
